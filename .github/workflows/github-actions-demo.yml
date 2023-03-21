@@ -24,4 +24,4 @@ jobs:
           tree
 
       - run: |
-          echo "${{ toJSON( github ) }}"
+          toJSON( github )
