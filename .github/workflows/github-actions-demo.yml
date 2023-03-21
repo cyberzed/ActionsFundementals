@@ -23,5 +23,10 @@ jobs:
         run: |
           tree
 
-      - run: |
-          toJSON( github )
+      - name: Output github
+        run: |
+          echo "${{ toJSON( github ) }}"
+
+      - name: Output env
+        run: |
+          echo "${{ toJSON(env) }}"
