@@ -22,3 +22,6 @@ jobs:
       - name: List files in repo
         run: |
           tree
+
+      - run: |
+          echo "${{ toJSON( github ) }}"
