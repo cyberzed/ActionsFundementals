@@ -19,8 +19,8 @@ jobs:
     - name: Container time
       id: hello-action
       uses: ./actions/hello-world-docker-action
-        with:
-          who-to-greet: 'Me'
+      with:
+        who-to-greet: 'Me'
 
     - name: Output time
       run: echo "${{ steps.hello-action.outputs.time }}"
