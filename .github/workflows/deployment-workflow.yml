@@ -8,8 +8,26 @@ on:
         required: true
 
 jobs:
-  x:
+  test:
+    needs: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Target environment
-        run: echo '${{ inputs.environment }}'
+      - name: Output
+        run: echo 'Testing...'
+  load-test:
+    needs: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output
+        run: |
+          echo 'Testing...'
+          sleep 15
+  production:
+    if: inputs.environment == 'Production'
+    needs: [test, load-test]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        steps: [1,2,3,4,5]
+    steps:
+      - run: echo 'Step ${{ matrix.steps }} deploying...'
