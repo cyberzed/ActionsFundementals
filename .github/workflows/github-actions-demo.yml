@@ -22,11 +22,3 @@ jobs:
       - name: List files in repo
         run: |
           tree
-
-      - name: Output github
-        run: |
-          echo "${{ toJSON( github ) }}"
-
-      - name: Output env
-        run: |
-          echo "${{ toJSON(env) }}"
