@@ -30,4 +30,7 @@ jobs:
       matrix:
         steps: [1,2,3,4,5]
     steps:
-      - run: echo 'Step ${{ matrix.steps }} deploying...'
+      - name: Deploying
+        run: |
+          echo 'Step ${{ matrix.steps }} deploying...'
+          sleep 10
