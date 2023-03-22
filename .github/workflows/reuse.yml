@@ -4,7 +4,12 @@ on:
   workflow_dispatch:
 
 jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo '${{ toJSON(github) }}'
   call-workflow:
+    needs: [debug]
     uses: ./.github/workflows/reusable.yml
     with:
       who-to-greet: '${{ github.triggering-actor }}'
