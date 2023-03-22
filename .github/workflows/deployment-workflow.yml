@@ -26,6 +26,9 @@ jobs:
     if: inputs.environment == 'Production'
     needs: [test, load-test]
     runs-on: ubuntu-latest
+    environment:
+      name: Production
+      url: https://writeabout.net
     strategy:
       matrix:
         steps: [1,2,3,4,5]
