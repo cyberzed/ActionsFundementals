@@ -12,7 +12,6 @@ on:
       receiver:
         description: 'Who should we greet?'
         required: true
-        default: "${{ github.actor }}"
 
 jobs:
   Hello:
