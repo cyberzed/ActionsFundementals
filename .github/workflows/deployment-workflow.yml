@@ -11,29 +11,39 @@ jobs:
   test:
     needs: Build
     runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
     steps:
       - name: Output
         run: echo 'Testing...'
   load-test:
     needs: Build
     runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
     steps:
       - name: Output
         run: |
           echo 'Testing...'
           sleep 15
   production:
-    if: inputs.environment == 'Production'
-    needs: [test, load-test]
+    needs: [Test, Load-Test]
     runs-on: ubuntu-latest
+    if: inputs.environment == 'Production'
     environment:
       name: Production
       url: https://writeabout.net
-    strategy:
-      matrix:
-        steps: [1,2,3,4,5]
     steps:
-      - name: Deploying
-        run: |
-          echo 'Step ${{ matrix.steps }} deploying...'
+      - run: |
+          echo 'Step 1 deploying...'
+          sleep 10
+      - run: |
+          echo 'Step 2 deploying...'
+          sleep 10
+      - run: |
+          echo 'Step 3 deploying...'
+          sleep 10
+      - run: |
+          echo 'Step 4 deploying...'
+          sleep 10
+      - run: |
+          echo 'Step 5 deploying...'
           sleep 10
