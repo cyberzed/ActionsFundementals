@@ -8,23 +8,25 @@ on:
         required: true
 
 jobs:
-  test:
+  Test:
     needs: Build
     runs-on: ubuntu-latest
     if: github.event_name == 'workflow_dispatch'
+    environment: Test
     steps:
       - name: Output
         run: echo 'Testing...'
-  load-test:
+  Load-Test:
     needs: Build
     runs-on: ubuntu-latest
     if: github.event_name == 'workflow_dispatch'
+    environment: Load-Test
     steps:
       - name: Output
         run: |
           echo 'Testing...'
           sleep 15
-  production:
+  Production:
     needs: [Test, Load-Test]
     runs-on: ubuntu-latest
     if: inputs.environment == 'Production'
