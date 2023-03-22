@@ -10,8 +10,8 @@ on:
         default: "World"
     outputs:
       current-time:
-        - description: 'Time during run'
-          value: ${{ jobs.reusable-job.outputs.current-time }}
+        description: 'Time during run'
+        value: ${{ jobs.reusable-job.outputs.current-time }}
 
 jobs:
   reusable-job:
