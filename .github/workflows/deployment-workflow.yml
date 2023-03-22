@@ -1,0 +1,15 @@
+name: Deploy stuff
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Where should we deploy?'
+        type: environment
+        required: true
+
+jobs:
+  x:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Target environment
+        run: echo '${{ inputs.environment }}'
