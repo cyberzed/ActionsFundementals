@@ -1,4 +1,4 @@
-name: Resuable workflow
+name: Reusable workflow
 
 on:
   workflow_call:
@@ -9,8 +9,9 @@ on:
         required: true
         default: "World"
     outputs:
-      - description: 'Time during run'
-        value: ${{ jobs.reusable-job.outputs.current-time }}
+      current-time:
+        - description: 'Time during run'
+          value: ${{ jobs.reusable-job.outputs.current-time }}
 
 jobs:
   reusable-job:
